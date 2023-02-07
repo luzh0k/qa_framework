@@ -61,5 +61,17 @@ class Database():
             JOIN products ON orders.product_id = products.id"
         self.cursor.execute(query)
         record = self.cursor.fetchall()
-
         return record
+    
+    def generate_new_id(self, table):
+        query = f"SELECT * FROM {table} ORDER BY id DESC"
+        self.cursor.execute(query)
+        record = self.cursor.fetchall()
+        new_id = record[0][0]+1
+        return new_id
+
+    def get_all_products(self):
+        query = f"SELECT * FROM products"
+        self.cursor.execute(query)
+        records = self.cursor.fetchall()
+        return records

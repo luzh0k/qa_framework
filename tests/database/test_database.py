@@ -1,5 +1,7 @@
 import pytest
 from modules.common.database import Database
+from  modules.common import generate_data
+
 
 
 @pytest.mark.database
@@ -56,3 +58,30 @@ def test_detailed_order(database_fix):
     assert orders[0][2] == 'солодка вода'
     assert orders [0][3] == 'з цукром'
     assert orders [0][4] == '12:22:23'
+
+@pytest.mark.database
+def test_scheme_create_select_delete_select(database_fix):
+    new_id = database_fix.generate_new_id('products')
+    isproduct = database_fix.get_product_by_id(new_id)
+    
+    assert isproduct == []
+
+    name = generate_data.generate_string(5, 1)
+    description = generate_data.generate_string(6, 2)
+    qnt = generate_data.generate_number(55)
+    database_fix.insert_product(new_id, name, description, qnt)
+    new_product = database_fix.get_product_by_id(new_id)
+
+    assert new_product[0][0] == new_id
+    assert new_product[0][1] == name
+    assert new_product[0][2] == description
+    assert new_product[0][3] == qnt
+
+    database_fix.delete_product_by_id(new_id)
+    isproduct2 = database_fix.get_product_by_id(new_id)
+    assert isproduct2 == []
+
+@pytest.mark.database
+def test_get_all_products(database_fix):
+    products = database_fix.get_all_products()
+    print(products)
