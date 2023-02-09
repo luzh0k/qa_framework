@@ -59,6 +59,9 @@ def test_detailed_order(database_fix):
     assert orders [0][3] == 'з цукром'
     assert orders [0][4] == '12:22:23'
 
+# test for whole cycle testing for resourse product: create-read-delete-check.
+# to do additional step for updating product
+ 
 @pytest.mark.database
 def test_scheme_create_select_delete_select(database_fix):
     new_id = database_fix.generate_new_id('products')
