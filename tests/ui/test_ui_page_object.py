@@ -15,5 +15,8 @@ def test_check_incorrect_username_page_object():
     # check that page title as expected
     sign_in_page.check_title("Sign in to GitHub · GitHub")
 
+    # check that alert appears
+    sign_in_page.check_alert_appearing()
+
     # close the browser
     sign_in_page.close()

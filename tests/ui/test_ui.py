@@ -3,6 +3,7 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
+
 #import time
 
 @pytest.mark.ui
@@ -33,8 +34,11 @@ def test_check_incorrect_username():
     # Press the button "Sign in"
     btn_elem.click()
 
-    #Check that page title as expected
+    #Check that flash alert appears
+
     assert driver.title == "Sign in to GitHub · GitHub"
+    assert driver.find_element(By.ID, "js-flash-container")
+    assert driver.find_element(By.CLASS_NAME, "js-flash-alert")
     #time.sleep(3)
 
     #close the browser

@@ -33,4 +33,8 @@ class SignInPage(BasePage):
 
         #Check that page title as expected 
         return self.driver.title == expected_title
+    
+    def check_alert_appearing(self):
+        # Check that element of js-flsah-alert -class is on the Page
+        return self.driver.find_element(By.CLASS_NAME, "js-flash-alert")
         
