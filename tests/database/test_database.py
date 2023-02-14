@@ -83,8 +83,9 @@ def test_scheme_create_select_delete_select(database_fix):
     database_fix.delete_product_by_id(new_id)
     isproduct2 = database_fix.get_product_by_id(new_id)
     assert isproduct2 == []
-
+# get all products form DB
 @pytest.mark.database
 def test_get_all_products(database_fix):
     products = database_fix.get_all_products()
     print(products)
+    assert len(products) != 0
