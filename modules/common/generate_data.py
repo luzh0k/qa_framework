@@ -1,4 +1,5 @@
 import random
+import time 
 
 # function for generating random string with k words, each of them with n symbols
 def generate_string(n, k):
@@ -15,3 +16,8 @@ def generate_string(n, k):
 def generate_number(n):
     number = random.uniform(0, n)
     return int(number)
+
+# function for generating repo_name
+def generate_reponame():
+    timestr = time.strftime("%Y%m%d-%H%M%S")
+    return 'luzhok_auto-' + timestr
