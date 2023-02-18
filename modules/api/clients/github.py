@@ -46,7 +46,6 @@ class GitHub:
         }
         r = requests.post(url, headers=headers, data=payload)
         body = r.json()
-        os.environ['repo_name'] = name
         return body
 
 # delete repo method
