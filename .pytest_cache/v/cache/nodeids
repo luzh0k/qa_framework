@@ -5,6 +5,7 @@
   "tests/api/test_github_api.py::test_get_all_user_repos",
   "tests/api/test_github_api.py::test_impossible_create_two_repo_with_the_same_name",
   "tests/api/test_github_api.py::test_new_repo_can_be_creating",
+  "tests/api/test_github_api.py::test_new_repo_can_be_creating2",
   "tests/api/test_github_api.py::test_repo_can_be_deleted",
   "tests/api/test_github_api.py::test_repo_can_be_found",
   "tests/api/test_github_api.py::test_repo_cannot_be_found",

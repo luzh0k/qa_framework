@@ -87,3 +87,11 @@ class GitHub:
         r = requests.get(url, headers=headers)
         body = r.json()
         return body
+# This modified method for creating new repo is more flexible and more usefull for tests. The previous one can be deprecated
+
+    def create_repo2(self, payload, headers):
+        load_dotenv()
+        url = "https://api.github.com/user/repos"
+        r = requests.post(url, headers=headers, data=payload)
+        body = r.json()
+        return body

@@ -2,11 +2,5 @@
   "tests/api/test_github_api.py::test_user_can_be_found": true,
   "tests/api/test_http.py::test_first_request": true,
   "tests/api/test_http.py::test_second_request": true,
-  "tests/api/test_http.py::test_status_code_request": true,
-  "tests/api/test_github_api.py::test_user_exists": true,
-  "tests/api/test_github_api.py::test_user_not_exists": true,
-  "tests/api/test_github_api.py::test_repo_can_be_found": true,
-  "tests/api/test_github_api.py::test_repo_cannot_be_found": true,
-  "tests/api/test_github_api.py::test_repo_with_single_char_be_found": true,
-  "tests/api/test_github_api.py::test_new_repo_can_be_creating": true
+  "tests/api/test_http.py::test_status_code_request": true
 }

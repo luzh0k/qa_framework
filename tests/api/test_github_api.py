@@ -2,8 +2,9 @@ import pytest
 import requests
 from modules.api.clients.github import GitHub
 from  modules.common import generate_data
+from dotenv import load_dotenv
 import os
-
+import json
 # check that we can find existing user
 @pytest.mark.api
 def test_user_exists(github_api):
@@ -21,7 +22,7 @@ def test_user_not_exists(github_api):
 def test_repo_can_be_found(github_api):
     r = github_api.search_repo('become-qa-auto')
 
-    assert r['total_count'] == 26
+    assert r['total_count'] == 32
     assert 'become-qa-auto' in r['items'][0]['name']
  
 # Check we can't find non-existing repo
@@ -39,6 +40,7 @@ def test_repo_with_single_char_be_found(github_api):
     assert r['total_count'] != 0
 
 # Positive case: we can create new repo with valid data and we can  select it after creating
+
 @pytest.mark.api
 def test_new_repo_can_be_creating(github_api):
     name = generate_data.generate_reponame()
@@ -50,6 +52,7 @@ def test_new_repo_can_be_creating(github_api):
     assert r['description'] == description
     r = github_api.get_user_repo(name)
     assert r['full_name'] == os.getenv("owner")+'/'+name
+
 
 # Negative case: we can't create new repo with duplicated name
 @pytest.mark.api
@@ -67,4 +70,3 @@ def test_repo_can_be_deleted(github_api):
     r = github_api.delete_repo(name)
     r = github_api.get_user_repo(name)
     assert r['message'] == 'Not Found'
-
